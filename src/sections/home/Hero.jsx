@@ -6,6 +6,7 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { prefersReducedMotion } from '@/utils/helpers';
 import homeImg from '@/assets/images/home.jpg';
+import logoImg from '@/assets/images/logo.png';
 
 const HeroParticles = lazy(() => import('@/components/three/HeroParticles'));
 
@@ -140,6 +141,11 @@ const Hero = () => {
         className="sticky top-10 z-50 -mt-[80svh] flex h-svh flex-col items-end justify-center pb-8 pt-10 sm:pt-0 text-right sm:pb-0 md:pt-32"
       >
         <Container className="flex flex-col items-end text-right">
+           <img
+    src={logoImg}
+    alt="Saro Media Works"
+    className="mb-4 h-20 w-auto sm:mb-6 sm:h-20"
+  />
           <p
   data-hero-eyebrow
   className="mb-3 max-w-[280px] font-mono text-label uppercase text-ember opacity-0 sm:mb-6 sm:max-w-none"
@@ -148,12 +154,11 @@ const Hero = () => {
 </p>
 <h1
   data-hero-title
-  className="ml-auto w-fit max-w-[320px] overflow-hidden text-right font-display text-display-sm font-semibold uppercase leading-[0.95] text-bone sm:max-w-none sm:text-display-lg md:text-display-lg"
+  className="ml-auto w-fit max-w-[320px] text-[#FBF2DC] overflow-hidden text-right font-display text-display-sm font-semibold uppercase leading-[0.95] text-bone sm:max-w-none sm:text-display-lg md:text-display-lg"
 >
   We Capture{' '}
-  <span className="relative inline-block font-normal italic text-ember">
+  <span className="relative inline-block font-normal text-[#C8921A] text-ember">
     Stories
-    <span className="absolute inset-x-0 -bottom-1 h-[3px] bg-ember/60 sm:h-[4px]" />
   </span>
 </h1>
 

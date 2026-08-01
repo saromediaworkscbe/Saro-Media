@@ -14,8 +14,8 @@ const Home = () => (
     <Intro />
     <ProjectsArchive />
     <Services />
-    <ReviewsPreview />
     <PackagesPreview />
+     <ReviewsPreview />
     <CtaBanner />
   </>
 );

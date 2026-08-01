@@ -34,18 +34,18 @@ const Footer = () => {
     <footer ref={scope} className="overflow-hidden border-t border-ink-line bg-ink">
       <div data-footer-inner>
         <Container className="pb-10 pt-20 md:pt-28">
-          <div className="mb-16 flex flex-col gap-10 md:mb-24 md:flex-row md:items-end md:justify-between">
+          {/* <div className="mb-16 flex flex-col gap-10 md:mb-24 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-2xl font-display text-display-md font-medium">
               Have a story worth telling{' '}
               <span className="text-ember">?</span>
             </h2>
             <Button to="/#contact">Start a project</Button>
-          </div>
+          </div> */}
 
-          <div className="grid gap-10 border-t border-ink-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 border-ink-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <p className="font-display text-lg font-semibold">
-                Aether<span className="text-ember">.</span>
+                Saro<span className="text-ember">.</span>
               </p>
               <p className="mt-3 max-w-56 text-sm text-bone-muted">{SITE.tagline}</p>
             </div>

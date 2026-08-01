@@ -112,10 +112,14 @@ const MediaCard = memo(function MediaCard({ project, index = 0, ratio = 'aspect-
  * First image is the tall hero tile, rest fill in around it.
  * Labels pull from project.services (rotating through them), falling
  * back to the project category if there aren't enough services listed.
+ *
+ * Clicking any tile opens that image full-size in a second overlay
+ * (selectedSrc), with a close button that fades in on hover.
  */
 function AlbumGallery({ project, album, onClose }) {
   const overlayRef = useRef(null);
   const gridRef = useRef(null);
+  const [selectedSrc, setSelectedSrc] = useState(null);
 
   useGSAP(() => {
     overlayRef.current?.focus();
@@ -129,7 +133,13 @@ function AlbumGallery({ project, album, onClose }) {
   }, []);
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Escape') onClose();
+    if (e.key === 'Escape') {
+      if (selectedSrc) {
+        setSelectedSrc(null);
+      } else {
+        onClose();
+      }
+    }
   };
 
   const labelFor = (i) => project.services?.[i] || project.category;
@@ -173,6 +183,7 @@ function AlbumGallery({ project, album, onClose }) {
               label={labelFor(0)}
               alt={project.title}
               className="aspect-[4/5] sm:col-span-1 sm:row-span-2 sm:aspect-auto"
+              onClick={() => setSelectedSrc(heroSrc)}
             />
           )}
           {restSrcs.map((src, i) => (
@@ -182,25 +193,60 @@ function AlbumGallery({ project, album, onClose }) {
               label={labelFor(i + 1)}
               alt={`${project.title} ${i + 2}`}
               className="aspect-[4/3]"
+              onClick={() => setSelectedSrc(src)}
             />
           ))}
         </div>
       </div>
+
+      {/* Single-image lightbox, layered above the bento grid */}
+      {selectedSrc && (
+        <div
+          className="group fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-6"
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedSrc(null);
+          }}
+        >
+          <img src={selectedSrc} alt="" className="max-h-full max-w-full object-contain" />
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedSrc(null);
+            }}
+            aria-label="Close"
+            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center
+                       rounded-full bg-ink/60 text-bone opacity-0 backdrop-blur-sm
+                       transition-opacity duration-300 group-hover:opacity-100
+                       hover:bg-ink/80"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>,
     document.body,
   );
 }
 
-function GalleryTile({ src, label, alt, className = '' }) {
+function GalleryTile({ src, label, alt, className = '', onClick }) {
   return (
-    <div className={`relative overflow-hidden ${className}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative block overflow-hidden text-left ${className}`}
+      {...cursorProps('view', 'View')}
+    >
       <img src={src} alt={alt} className="h-full w-full object-cover" />
       {label && (
         <span className="absolute bottom-3 left-3 bg-black/70 px-3 py-1 font-mono text-label uppercase tracking-wide text-bone">
           {label}
         </span>
       )}
-    </div>
+    </button>
   );
 }
 
