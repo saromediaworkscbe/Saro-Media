@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx eslint *)",
+      "Bash(npm ls *)",
+      "Bash(npx --no-install playwright --version)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+@import './tailwind.css';
+@import './animations.css';
+
+:root {
+  --color-ink: #080808;
+  --color-ember: #ff6b00;
+  --color-bone: #f5f5f5;
+  --nav-height: 5rem;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  @apply bg-ink text-bone font-body antialiased;
+  overscroll-behavior-y: none;
+}
+
+::selection {
+  background: var(--color-ember);
+  color: var(--color-ink);
+}
+
+/* Custom cursor only replaces the native one on fine pointers */
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button {
+    cursor: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 3px;
+}
+
+img {
+  user-select: none;
+}
+
+/* SplitType lines need an overflow mask for reveal animations */
+.line-mask .line {
+  overflow: hidden;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
