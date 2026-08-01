@@ -9,7 +9,7 @@ import CtaBanner from '@/sections/home/CtaBanner';
 
 const Home = () => (
   <>
-    <Seo description="Aether is a media & creative agency making films, brands and digital experiences. Twelve projects a year, each one built to be remembered." />
+    <Seo description="Saro is a media & creative agency making films, brands and digital experiences. Twelve projects a year, each one built to be remembered." />
     <Hero />
     <Intro />
     <ProjectsArchive />

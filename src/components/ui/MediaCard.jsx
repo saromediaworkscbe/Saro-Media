@@ -86,12 +86,12 @@ const MediaCard = memo(function MediaCard({ project, index = 0, ratio = 'aspect-
           </div>
         </div>
 
-        <div className="mt-4 flex items-baseline justify-between gap-4">
-          <div>
-            <span className="mr-3 font-mono text-label text-bone-faint">
+        <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 sm:mt-4">
+          <div className="min-w-0">
+            <span className="mr-2 font-mono text-[10px] text-bone-faint sm:mr-3 sm:text-label">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <span className="font-display text-xl text-bone transition-colors duration-300 group-hover:text-ember md:text-2xl">
+            <span className="font-display text-lg text-bone transition-colors duration-300 group-hover:text-ember sm:text-xl md:text-2xl">
               {project.title}
             </span>
           </div>
@@ -158,25 +158,27 @@ function AlbumGallery({ project, album, onClose }) {
     >
       {/* Header */}
       <div
-        className="sticky top-0 z-10 flex items-center justify-between bg-black/80 px-6 py-5 backdrop-blur-sm sm:px-10"
+        className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/80 px-4 py-4 backdrop-blur-sm sm:px-10 sm:py-5"
         onClick={(e) => e.stopPropagation()}
       >
-        <div>
-          <span className="font-display text-lg text-bone md:text-xl">{project.title}</span>
-          <span className="ml-3 font-mono text-label text-bone-faint">{album.length} photos</span>
+        <div className="min-w-0">
+          <span className="font-display text-base text-bone md:text-lg lg:text-xl">{project.title}</span>
+          <span className="ml-2 font-mono text-[10px] text-bone-faint sm:ml-3 sm:text-label">
+            {album.length} photos
+          </span>
         </div>
         <button
           type="button"
           onClick={onClose}
-          className="font-mono text-label uppercase text-bone-faint transition-colors hover:text-ember"
+          className="shrink-0 font-mono text-[10px] uppercase text-bone-faint transition-colors hover:text-ember sm:text-label"
         >
           Close ✕
         </button>
       </div>
 
       {/* Bento grid */}
-      <div className="mx-auto max-w-6xl px-6 pb-16 pt-8 sm:px-10" onClick={(e) => e.stopPropagation()}>
-        <div ref={gridRef} className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:grid-rows-2">
+      <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-10 sm:pb-16 sm:pt-8" onClick={(e) => e.stopPropagation()}>
+        <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:grid-rows-2 sm:gap-4">
           {heroSrc && (
             <GalleryTile
               src={heroSrc}
@@ -202,13 +204,22 @@ function AlbumGallery({ project, album, onClose }) {
       {/* Single-image lightbox, layered above the bento grid */}
       {selectedSrc && (
         <div
-          className="group fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-6"
+          className="group fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-3 sm:p-6"
           onClick={(e) => {
             e.stopPropagation();
             setSelectedSrc(null);
           }}
         >
-          <img src={selectedSrc} alt="" className="max-h-full max-w-full object-contain" />
+          <img
+            src={selectedSrc}
+            alt=""
+            className="max-h-full max-w-full object-contain"
+          />
+          {/*
+            Close button: always visible on touch/small screens (no hover
+            there to reveal it), fades in on hover from sm breakpoint up
+            where a pointer device is assumed.
+          */}
           <button
             type="button"
             onClick={(e) => {
@@ -216,12 +227,13 @@ function AlbumGallery({ project, album, onClose }) {
               setSelectedSrc(null);
             }}
             aria-label="Close"
-            className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center
-                       rounded-full bg-ink/60 text-bone opacity-0 backdrop-blur-sm
-                       transition-opacity duration-300 group-hover:opacity-100
-                       hover:bg-ink/80"
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center
+                       rounded-full bg-ink/60 text-bone backdrop-blur-sm
+                       transition-opacity duration-300 hover:bg-ink/80
+                       opacity-100 sm:right-6 sm:top-6 sm:h-11 sm:w-11
+                       sm:opacity-0 sm:group-hover:opacity-100"
           >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
             </svg>
           </button>
@@ -237,12 +249,12 @@ function GalleryTile({ src, label, alt, className = '', onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className={`relative block overflow-hidden text-left ${className}`}
+      className={`relative block overflow-hidden text-left transition-opacity active:opacity-80 ${className}`}
       {...cursorProps('view', 'View')}
     >
       <img src={src} alt={alt} className="h-full w-full object-cover" />
       {label && (
-        <span className="absolute bottom-3 left-3 bg-black/70 px-3 py-1 font-mono text-label uppercase tracking-wide text-bone">
+        <span className="absolute bottom-2 left-2 bg-black/70 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-bone sm:bottom-3 sm:left-3 sm:px-3 sm:py-1 sm:text-label">
           {label}
         </span>
       )}

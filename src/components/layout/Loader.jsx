@@ -42,11 +42,11 @@ const Loader = ({ onComplete }) => {
       <div className="absolute inset-0 flex items-end justify-between overflow-hidden p-8">
         <div className="overflow-hidden">
           <p data-loader-text className="font-display text-lg text-bone">
-            Aether<span className="text-ember">.</span> Studio
+            Saro<span className="text-ember">.</span> Studio
           </p>
         </div>
         <div className="overflow-hidden">
-          <p data-loader-text className="font-display text-7xl font-medium text-bone md:text-9xl">
+          <p data-loader-text className="font-display text-4xl font-medium text-bone md:text-7xl">
             <span data-count>0</span>
             <span className="text-ember">%</span>
           </p>
