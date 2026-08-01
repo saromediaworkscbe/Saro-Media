@@ -10,11 +10,10 @@ import { reviews } from '@/data/reviews';
 /** Reviews, folded into the one-page flow: same content as the old /reviews page. */
 const ReviewsPreview = () => (
   <section id="reviews" className="border-t border-ink-line">
-    <Container className="pb-12 pt-section">
+    <Container className="pb-10 pt-section">
       <SectionTitle eyebrow="Client reviews" title="Kind words, on the record" />
     </Container>
-    <RatingSummary />
-    <Reveal as="div" variant="clip" className="overflow-hidden py-section">
+    <Reveal as="div" variant="clip" className="overflow-hidden">
       <Marquee duration={45}>
         {reviews.map((review) => (
           <ReviewCard key={review.id} review={review} className="mx-3 w-[19rem] sm:w-[24rem]" />

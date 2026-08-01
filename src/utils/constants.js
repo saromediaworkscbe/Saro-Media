@@ -1,8 +1,8 @@
 export const SITE = {
-  name: 'Aether Studio',
+  name: 'Saro Studio',
   tagline: 'Films, brands & digital worlds',
   email: 'hello@aether.studio',
-  phone: '+1 (212) 555-0148',
+  phone: '9944582749',
   address: '44 Mercer Street, Studio 3, New York, NY 10013',
   socials: [
     { label: 'Instagram', href: 'https://instagram.com' },

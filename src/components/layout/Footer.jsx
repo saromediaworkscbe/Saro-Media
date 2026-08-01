@@ -6,6 +6,7 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { NAV_LINKS, SITE } from '@/utils/constants';
 import { prefersReducedMotion } from '@/utils/helpers';
+import Contact from '@/sections/home/Contact';
 
 /**
  * Footer reveal: the footer sits beneath the page (negative margin trick
@@ -41,8 +42,9 @@ const Footer = () => {
             </h2>
             <Button to="/#contact">Start a project</Button>
           </div> */}
+          <Contact/>
 
-          <div className="grid gap-10 border-ink-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 border-ink-line  sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <p className="font-display text-lg font-semibold">
                 Saro<span className="text-ember">.</span>

@@ -13,7 +13,7 @@ const SectionTitle = ({ eyebrow, title, as = 'h2', align = 'left', className = '
         <p className="mb-4 font-mono text-label uppercase text-ember">{eyebrow}</p>
       </Reveal>
     )}
-    <AnimatedHeading as={as} className="text-display-md font-display font-medium text-bone">
+    <AnimatedHeading as={as} className="text-display-sm font-display font-medium text-bone">
       {title}
     </AnimatedHeading>
   </header>

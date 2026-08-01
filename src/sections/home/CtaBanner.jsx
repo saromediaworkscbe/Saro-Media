@@ -10,7 +10,7 @@ const CtaBanner = () => (
     <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-[0.06]" aria-hidden>
       <Marquee duration={20}>
         <span className="whitespace-nowrap px-8 font-display text-[16vw] font-semibold uppercase leading-none">
-          Let's make something — Let's make something —
+          Saro media works - Saro media works -
         </span>
       </Marquee>
     </div>
