@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: auto; /* Lenis owns scrolling */
+  overflow-x: hidden; /* guards against any element briefly overflowing sideways during an animation */
 }
 
 html.lenis,
@@ -28,6 +29,7 @@ html.lenis body {
 body {
   @apply bg-ink text-bone font-body antialiased;
   overscroll-behavior-y: none;
+  overflow-x: hidden;
 }
 
 ::selection {

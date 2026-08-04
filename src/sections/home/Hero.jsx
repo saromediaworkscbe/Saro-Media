@@ -53,7 +53,7 @@ const Hero = () => {
           .fromTo(
             '[data-hero-meta]',
             { x: 70, opacity: 0 },
-            { x: -20, opacity: 1, stagger: 0.1, duration: 0.9 },
+            { x: 0, opacity: 1, stagger: 0.1, duration: 0.9 },
             '-=0.7',
           )
           .fromTo(
@@ -141,37 +141,43 @@ const Hero = () => {
         className="sticky top-10 z-50 -mt-[80svh] flex h-svh flex-col items-end justify-center pb-8 pt-10 sm:pt-0 text-right sm:pb-0 md:pt-32"
       >
         <Container className="flex flex-col items-end text-right">
-           <img
+  {/* Logo */}
+  <img
     src={logoImg}
     alt="Saro Media Works"
-    className="mb-4 h-20 w-auto sm:mb-6 sm:h-20"
+    className="mb-4 h-16 w-auto sm:mb-6 sm:h-20"
   />
-          <p
-  data-hero-eyebrow
-  className="mb-3 max-w-[280px] font-mono text-label uppercase text-ember opacity-0 sm:mb-6 sm:max-w-none"
->
-  Media & creative agency — India
-</p>
-<h1
-  data-hero-title
-  className="ml-auto w-fit max-w-[320px] overflow-hidden text-right font-display text-display-sm font-semibold uppercase leading-[0.95] text-[#FBF2DC] sm:max-w-none sm:text-display-lg md:text-display-lg"
->
-  We Capture{" "}
-  <span className="relative inline-block font-normal text-[#C8921A]">
-    Stories
-  </span>
-</h1>
 
-<div className="mt-4 flex w-full flex-col items-end gap-3 sm:mt-8 sm:gap-8">
+  {/* Eyebrow */}
   <p
-    data-hero-meta
-    className="w-fit max-w-[260px] text-right font-body text-[11px] font-light leading-relaxed text-bone opacity-0 sm:max-w-md sm:text-sm md:text-sm lg:text-base"
+    data-hero-eyebrow
+    className="mb-3 max-w-[220px] text-right font-mono text-[10px] uppercase tracking-[0.2em] text-[#C8921A] opacity-0 sm:mb-6 sm:max-w-none sm:text-label"
   >
-    At Saro Media Works, we transform emotions into timeless visual experiences through cinematic photography and filmmaking.
+    Media & Creative Agency — India
   </p>
-</div>
 
-        </Container>
+  {/* Heading */}
+  <h1
+    data-hero-title
+    className="max-w-[300px] text-right font-display text-[2.2rem] font-semibold uppercase leading-[0.9] text-[#FBF2DC] sm:max-w-none sm:text-display-lg"
+  >
+    We Capture{" "}
+    <span className="font-normal text-[#C8921A]">
+      Stories
+    </span>
+  </h1>
+
+  {/* Description */}
+  <div className="mt-5 flex flex-col items-end">
+    <p
+      data-hero-meta
+      className="max-w-[260px] text-right font-body text-xs font-light leading-relaxed text-[#FBF2DC]/80 opacity-0 sm:max-w-md sm:text-sm lg:text-base"
+    >
+      At Saro Media Works, we transform emotions into timeless visual
+      experiences through cinematic photography and filmmaking.
+    </p>
+  </div>
+</Container>
       </div>
     </section>
   );
