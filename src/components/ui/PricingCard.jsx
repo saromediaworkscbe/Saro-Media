@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import Button from '@/components/ui/Button';
 import { cn } from '@/utils/helpers';
+import { SITE } from '@/utils/constants';
 
 const PricingCard = memo(function PricingCard({ pkg }) {
   return (
@@ -43,7 +44,7 @@ const PricingCard = memo(function PricingCard({ pkg }) {
       </ul>
 
       <Button
-        to="/#contact"
+        href={`tel:${SITE.phone.replace(/[^+\d]/g, '')}`}
         variant={pkg.highlight ? 'primary' : 'outline'}
         className="mt-8 justify-center sm:mt-10"
       >

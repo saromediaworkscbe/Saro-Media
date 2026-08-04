@@ -1,14 +1,12 @@
 export const SITE = {
   name: 'Saro Studio',
   tagline: 'Films, brands & digital worlds',
-  email: 'hello@aether.studio',
-  phone: '9944582749',
-  address: '44 Mercer Street, Studio 3, New York, NY 10013',
+  email: 'hello@saromedia.works',
+  phone: '+91 9944582749',
+  address: 'Coimbatore, Tamil Nadu, India',
   socials: [
     { label: 'Instagram', href: 'https://instagram.com' },
-    { label: 'Vimeo', href: 'https://vimeo.com' },
-    { label: 'Behance', href: 'https://behance.net' },
-    { label: 'LinkedIn', href: 'https://linkedin.com' },
+    { label: 'WhatsApp', href: 'https://wa.me/919944582749' },
   ],
 };
 

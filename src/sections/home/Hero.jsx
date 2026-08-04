@@ -154,10 +154,10 @@ const Hero = () => {
 </p>
 <h1
   data-hero-title
-  className="ml-auto w-fit max-w-[320px] text-[#FBF2DC] overflow-hidden text-right font-display text-display-sm font-semibold uppercase leading-[0.95] text-bone sm:max-w-none sm:text-display-lg md:text-display-lg"
+  className="ml-auto w-fit max-w-[320px] overflow-hidden text-right font-display text-display-sm font-semibold uppercase leading-[0.95] text-[#FBF2DC] sm:max-w-none sm:text-display-lg md:text-display-lg"
 >
-  We Capture{' '}
-  <span className="relative inline-block font-normal text-[#C8921A] text-ember">
+  We Capture{" "}
+  <span className="relative inline-block font-normal text-[#C8921A]">
     Stories
   </span>
 </h1>

@@ -188,7 +188,11 @@ const Navbar = () => {
           </ul>
 
           <div className="hidden lg:block">
-            <Button to="/#contact" variant="outline" className="px-5 py-2.5 text-xs">
+            <Button
+              href={`tel:${SITE.phone.replace(/[^+\d]/g, '')}`}
+              variant="outline"
+              className="px-5 py-2.5 text-xs"
+            >
               Start a project
             </Button>
           </div>

@@ -12,11 +12,11 @@ export const PROJECT_CATEGORIES = [];
 
 export const projects = [
   {
-    slug: 'nocturne-motors',
-    title: 'Nocturne Motors',
-    category: 'Film',
+    slug: 'wedding',
+    title: 'Wedding',
+    category: 'Branding',
     year: 2026,
-    client: 'Nocturne Motors',
+    client: 'Wedding',
     services: ['Direction', 'Cinematography', 'Post-production'],
     technologies: ['RED Komodo', 'DaVinci Resolve', 'After Effects', 'Cinema 4D'],
     summary:
@@ -32,13 +32,13 @@ export const projects = [
     accentStat: { value: 14, suffix: 'M', label: 'organic views in week one' },
   },
   {
-    slug: 'salt-and-ash',
-    title: 'Salt & Ash',
+    slug: 'Event',
+    title: 'Event',
     category: 'Branding',
     year: 2025,
-    client: 'Salt & Ash Restaurants',
+    client: 'Event',
     services: ['Identity', 'Art Direction', 'Packaging'],
-    technologies: ['Figma', 'Illustrator', 'Blender', 'GSAP'],
+    technologies: [],
     summary:
       'Full identity for a coastal fire-cooking restaurant group — mark, menus, signage and a site that smoulders.',
     description:
@@ -52,11 +52,11 @@ export const projects = [
     accentStat: { value: 3, suffix: 'x', label: 'covers per night after relaunch' },
   },
   {
-    slug: 'orbital-festival',
-    title: 'Orbital Festival',
-    category: 'Digital',
+    slug: 'Marriage',
+    title: 'Marriage',
+    category: 'Branding',
     year: 2025,
-    client: 'Orbital Music Group',
+    client: 'Marriage',
     services: ['Web Design', 'Development', 'WebGL'],
     technologies: ['React', 'Three.js', 'GSAP', 'Vercel'],
     summary:
@@ -72,11 +72,11 @@ export const projects = [
     accentStat: { value: 40, suffix: 'k', label: 'tickets sold in six hours' },
   },
   {
-    slug: 'field-notes-ss26',
-    title: 'Field Notes SS26',
-    category: 'Campaign',
+    slug: 'Shoot',
+    title: 'Shoot',
+    category: 'Branding',
     year: 2026,
-    client: 'Field Notes Apparel',
+    client: 'Shoot',
     services: ['Campaign', 'Photography', 'Social'],
     technologies: ['Phase One', 'Capture One', 'Premiere Pro'],
     summary:

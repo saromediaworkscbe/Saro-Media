@@ -3,6 +3,7 @@ import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import Reveal from '@/components/ui/Reveal';
 import Button from '@/components/ui/Button';
 import Marquee from '@/components/ui/Marquee';
+import { SITE } from '@/utils/constants';
 
 /** Closing CTA with an oversized marquee ribbon behind it. */
 const CtaBanner = () => (
@@ -19,7 +20,7 @@ const CtaBanner = () => (
         Your next project starts with one call
       </AnimatedHeading>
       <Reveal delay={0.2} className="mt-10">
-        <Button to="/#contact" className="mx-auto">
+        <Button href={`tel:${SITE.phone.replace(/[^+\d]/g, '')}`} className="mx-auto">
           Book the call
         </Button>
       </Reveal>
