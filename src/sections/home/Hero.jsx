@@ -101,7 +101,7 @@ const Hero = () => {
   return (
     <section
       ref={scope}
-      className="relative min-h-[130svh] sm:min-h-[145svh] md:min-h-[160svh]"
+      className="relative min-h-[124svh] sm:min-h-[130svh] md:min-h-[136svh]"
     >
       {/* Media pins in place for the height of this section */}
       <div

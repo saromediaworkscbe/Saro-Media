@@ -6,3 +6,4 @@ import { gsap } from '@/animations/gsapSetup';
  * keeping gsap plugin registration behind a single module boundary.
  */
 export { useGSAP, gsap };
+    

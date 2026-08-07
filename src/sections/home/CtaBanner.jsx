@@ -16,6 +16,9 @@ const CtaBanner = () => (
       </Marquee>
     </div>
     <Container className="relative text-center">
+      <Reveal>
+        <p className="mb-5 font-mono text-label uppercase text-ember">Let's talk</p>
+      </Reveal>
       <AnimatedHeading as="h2" className="mx-auto max-w-3xl font-display text-display-lg font-medium">
         Your next project starts with one call
       </AnimatedHeading>

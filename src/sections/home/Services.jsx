@@ -3,88 +3,76 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from '@/animations/gsapSetup';
 import Container from '@/components/ui/Container';
 import SectionTitle from '@/components/ui/SectionTitle';
-import Reveal from '@/components/ui/Reveal';
 import Badge from '@/components/ui/Badge';
 import { services } from '@/data/services';
 import { formatIndex, prefersReducedMotion } from '@/utils/helpers';
 
 /**
- * Stacked service panels: each panel pins briefly while the next slides
- * over it — a card-deck effect built from individual ScrollTriggers.
+ * Horizontal scroll gallery of services — same pinned-track mechanism as
+ * FeaturedProjects (proven working pattern in this codebase), replacing
+ * the earlier sticky-stacked-panels design.
  */
-const STICKY_OFFSET_REM = 3.25; // vertical stagger per panel, in rem
+const ServiceCard = ({ service, index }) => (
+  <article className="flex w-[85vw] shrink-0 flex-col justify-between border border-ink-line bg-ink-soft p-6 sm:w-[60vw] sm:p-8 lg:w-[30vw] lg:p-10">
+    <div>
+      <p className="font-mono text-[10px] text-ember">{formatIndex(index)}</p>
+      <h3 className="mt-4 font-display text-2xl font-medium leading-tight sm:text-3xl">
+        {service.title}
+      </h3>
+      <p className="mt-4 text-sm text-bone-muted sm:text-base">{service.description}</p>
+    </div>
+    <div className="mt-8 flex flex-wrap gap-2 border-t border-ink-line pt-6">
+      {service.deliverables.map((item) => (
+        <Badge key={item}>{item}</Badge>
+      ))}
+    </div>
+  </article>
+);
 
 const Services = () => {
   const scope = useRef(null);
+  const trackRef = useRef(null);
 
   useGSAP(
     () => {
       if (prefersReducedMotion()) return;
-      const panels = gsap.utils.toArray('[data-service-panel]');
-      panels.forEach((panel, i) => {
-        if (i === panels.length - 1) return;
-        gsap.set(panel, { transformOrigin: 'top center' });
-        gsap.to(panel, {
-          scale: 0.94,
-          opacity: 0.5,
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 1024px)', () => {
+        const track = trackRef.current;
+        const distance = () => track.scrollWidth - window.innerWidth;
+        gsap.to(track, {
+          x: () => -distance(),
           ease: 'none',
           scrollTrigger: {
-            trigger: panels[i + 1],
-            start: 'top bottom',
-            end: 'top top',
-            scrub: true,
+            trigger: scope.current,
+            start: 'top top',
+            end: () => `+=${distance()}`,
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
           },
         });
       });
+      return () => mm.revert();
     },
     { scope },
   );
 
   return (
-    <section ref={scope} className="py-section">
-      <Container>
-        <SectionTitle eyebrow="What we do" title="Four disciplines, one studio" className="mb-16" />
-        <div className="space-y-3 sm:space-y-4">
-          {services.map((service, index) => (
-            <article
-              key={service.id}
-              data-service-panel
-              style={{
-                top: `${6 + index * STICKY_OFFSET_REM}rem`,
-                zIndex: index + 1,
-              }}
-              className="sticky relative bg-ink-soft p-5 will-change-transform sm:p-6 md:p-8"
-            >
-              {/* Thin accent bar on the leading edge — replaces the boxed border + shadow */}
-              <div className="absolute inset-y-0 left-0 w-[3px] bg-ember" />
-
-              <div className="grid gap-x-6 gap-y-3 md:grid-cols-12">
-                <p className="font-mono text-[10px] text-ember md:col-span-1">{formatIndex(index)}</p>
-                <h3 className="font-display text-xl font-medium leading-tight sm:text-2xl md:col-span-5">
-                  {service.title}
-                </h3>
-                <div className="md:col-span-6">
-                  <p className="text-sm text-bone-muted">{service.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2 border-t border-ink-line pt-4">
-                    {service.deliverables.map((item) => (
-                      <Badge key={item}>{item}</Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        <Reveal className="mt-10">
-          <p className="text-sm text-bone-faint">
-            Scopes are fixed before production begins — see{' '}
-            <a href="/packages" className="text-bone-muted underline underline-offset-4 hover:text-ember">
-              packages
-            </a>{' '}
-            for how we price.
-          </p>
-        </Reveal>
+    <section ref={scope} className="overflow-hidden py-section">
+      <Container className="mb-12">
+        <SectionTitle eyebrow="What we do" title={`${services.length} disciplines, one studio`} />
       </Container>
+
+      {/* Mobile/tablet: wrapped 2-col grid, no scroll-hijacking. lg+: horizontal pinned track. */}
+      <div
+        ref={trackRef}
+        className="grid grid-cols-1 gap-6 px-gutter sm:grid-cols-2 lg:flex lg:w-max lg:gap-8 lg:pr-[20vw]"
+      >
+        {services.map((service, index) => (
+          <ServiceCard key={service.id} service={service} index={index} />
+        ))}
+      </div>
     </section>
   );
 };
