@@ -7,7 +7,6 @@ import ProjectGrid from '@/sections/projects/ProjectGrid';
 import { projects } from '@/data/projects';
 
 const Projects = () => {
-  const [category, setCategory] = useState('All');
 
   // Memoized so MediaCards keep referential stability between renders
   const visible = useMemo(
@@ -24,9 +23,6 @@ const Projects = () => {
         description="Everything here shipped, launched, aired or sold out. Filter by discipline, or scroll the lot."
       />
       <Container className="pb-section">
-        <div className="mb-14">
-          <ProjectFilter active={category} onChange={setCategory} />
-        </div>
         <ProjectGrid projects={visible} />
       </Container>
     </>

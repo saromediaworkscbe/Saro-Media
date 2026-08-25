@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { gsap } from '@/animations/gsapSetup';
 import { useGSAP } from '@gsap/react';
@@ -14,13 +14,13 @@ const MediaCard = memo(function MediaCard({ project, index = 0, ratio = 'aspect-
   const [isOpen, setIsOpen] = useState(false);
   const isDesktop = useIsDesktop();
 
-  // cover + gallery makes the full album; falls back to just the cover
-  // if a project has no gallery images.
-  const album = [project.cover, ...(project.gallery || [])];
+  // cover + gallery makes the full album; filter duplicate of cover from gallery
+  const uniqueGallery = (project.gallery || []).filter((src) => src !== project.cover);
+  const album = [project.cover, ...uniqueGallery];
 
-  // First 4 images for the hover collage, padded if the project has fewer.
-  const collage = [...album];
-  while (collage.length < 4) collage.push(collage[collage.length - 1]);
+  // First 4 unique images for the hover collage, padded if the project has fewer.
+  const collage = Array.from(new Set(album));
+  while (collage.length < 4) collage.push(collage[collage.length - 1] || project.cover);
 
   const onEnter = () => {
     if (prefersReducedMotion()) return;
@@ -92,7 +92,7 @@ const MediaCard = memo(function MediaCard({ project, index = 0, ratio = 'aspect-
               {String(index + 1).padStart(2, '0')}
             </span>
             <span className="font-display text-lg text-bone transition-colors duration-300 group-hover:text-ember sm:text-xl md:text-2xl">
-              {project.title}
+              {project.title || project.client || project.slug}
             </span>
           </div>
           <div className="flex shrink-0 items-center gap-3">
@@ -121,8 +121,23 @@ function AlbumGallery({ project, album, onClose }) {
   const gridRef = useRef(null);
   const [selectedSrc, setSelectedSrc] = useState(null);
 
+  useEffect(() => {
+    if (window.lenis) {
+      window.lenis.stop();
+    }
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      if (window.lenis) {
+        window.lenis.start();
+      }
+      document.body.style.overflow = prevOverflow;
+    };
+  }, []);
+
   useGSAP(() => {
-    overlayRef.current?.focus();
+    overlayRef.current?.focus({ preventScroll: true });
 
     gsap.fromTo(overlayRef.current, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'power2.out' });
     gsap.fromTo(
@@ -146,101 +161,110 @@ function AlbumGallery({ project, album, onClose }) {
 
   const [heroSrc, ...restSrcs] = album;
 
-  return createPortal(
-    <div
-      ref={overlayRef}
-      className="fixed inset-0 z-[100] overflow-y-auto bg-black/95 backdrop-blur-sm cursor-auto"
-      onClick={onClose}
-      onKeyDown={handleKeyDown}
-      tabIndex={-1}
-      role="dialog"
-      aria-modal="true"
-    >
-      {/* Header */}
-      <div
-        className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/80 px-4 py-4 backdrop-blur-sm sm:px-10 sm:py-5"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="min-w-0">
-          <span className="font-display text-base text-bone md:text-lg lg:text-xl">{project.title}</span>
-          <span className="ml-2 font-mono text-[10px] text-bone-faint sm:ml-3 sm:text-label">
-            {album.length} photos
-          </span>
-        </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="shrink-0 font-mono text-[10px] uppercase text-bone-faint transition-colors hover:text-ember sm:text-label"
-        >
-          Close ✕
-        </button>
-      </div>
-
-      {/* Bento grid */}
-      <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-10 sm:pb-16 sm:pt-8" onClick={(e) => e.stopPropagation()}>
-        <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:grid-rows-2 sm:gap-4">
-          {heroSrc && (
-            <GalleryTile
-              src={heroSrc}
-              label={labelFor(0)}
-              alt={project.title}
-              className="aspect-[4/5] sm:col-span-1 sm:row-span-2 sm:aspect-auto"
-              onClick={() => setSelectedSrc(heroSrc)}
-            />
-          )}
-          {restSrcs.map((src, i) => (
-            <GalleryTile
-              key={src + i}
-              src={src}
-              label={labelFor(i + 1)}
-              alt={`${project.title} ${i + 2}`}
-              className="aspect-[4/3]"
-              onClick={() => setSelectedSrc(src)}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Single-image lightbox, layered above the bento grid */}
-      {selectedSrc && (
+  return (
+    <>
+      {createPortal(
         <div
-          className="group fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-3 sm:p-6"
-          onClick={(e) => {
-            e.stopPropagation();
-            setSelectedSrc(null);
-          }}
+          ref={overlayRef}
+          // data-lenis-prevent tells Lenis to leave wheel/touch events on this
+          // element alone instead of intercepting them — without this, Lenis
+          // keeps calling preventDefault() on scroll here even after .stop().
+          data-lenis-prevent
+          className="fixed inset-0 z-[100] overflow-y-auto bg-black/95 backdrop-blur-sm cursor-auto"
+          onClick={onClose}
+          onKeyDown={handleKeyDown}
+          tabIndex={-1}
+          role="dialog"
+          aria-modal="true"
         >
-          <img
-            src={selectedSrc}
-            alt=""
-            className="max-h-full max-w-full object-contain"
-          />
-          {/*
-            Close button: always visible on touch/small screens (no hover
-            there to reveal it), fades in on hover from sm breakpoint up
-            where a pointer device is assumed.
-          */}
-          <button
-            type="button"
+          {/* Header */}
+          <div
+            className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-black/80 px-4 py-4 backdrop-blur-sm sm:px-10 sm:py-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="min-w-0">
+              <span className="font-display text-base text-bone md:text-lg lg:text-xl">{project.title}</span>
+              <span className="ml-2 font-mono text-[10px] text-bone-faint sm:ml-3 sm:text-label">
+                {album.length} photos
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={onClose}
+              className="shrink-0 font-mono text-[10px] uppercase text-bone-faint transition-colors hover:text-ember sm:text-label"
+            >
+              Close ✕
+            </button>
+          </div>
+
+          {/* Bento grid */}
+          <div className="mx-auto max-w-6xl px-4 pb-10 pt-6 sm:px-10 sm:pb-16 sm:pt-8" onClick={(e) => e.stopPropagation()}>
+            <div ref={gridRef} className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:grid-rows-2 sm:gap-4">
+              {heroSrc && (
+                <GalleryTile
+                  src={heroSrc}
+                  label={labelFor(0)}
+                  alt={project.title}
+                  className="aspect-[4/5] sm:col-span-1 sm:row-span-2 sm:aspect-auto"
+                  onClick={() => setSelectedSrc(heroSrc)}
+                />
+              )}
+              {restSrcs.map((src, i) => (
+                <GalleryTile
+                  key={src + i}
+                  src={src}
+                  label={labelFor(i + 1)}
+                  alt={`${project.title} ${i + 2}`}
+                  className="aspect-[4/3]"
+                  onClick={() => setSelectedSrc(src)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )}
+
+      {/*
+        Rendered as its OWN portal, sibling to the overlay above rather than
+        nested inside it. Because the gallery overlay is `overflow-y-auto` and
+        gets scrolled, a `fixed` element nested inside it can render offset by
+        the scroll amount on some browsers (iOS Safari in particular) — so a
+        lightbox opened while scrolled down showed up near the top, cut off.
+        Portalling it separately keeps it fixed to the real viewport always.
+      */}
+      {selectedSrc &&
+        createPortal(
+          <div
+            className="group fixed inset-0 z-[110] flex items-center justify-center bg-black/95 p-3 sm:p-6"
+            data-lenis-prevent
             onClick={(e) => {
               e.stopPropagation();
               setSelectedSrc(null);
             }}
-            aria-label="Close"
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center
-                       rounded-full bg-ink/60 text-bone backdrop-blur-sm
-                       transition-opacity duration-300 hover:bg-ink/80
-                       opacity-100 sm:right-6 sm:top-6 sm:h-11 sm:w-11
-                       sm:opacity-0 sm:group-hover:opacity-100"
           >
-            <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
-      )}
-    </div>,
-    document.body,
+            <img src={selectedSrc} alt="" className="max-h-full max-w-full object-contain" />
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedSrc(null);
+              }}
+              aria-label="Close"
+              className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center
+                         rounded-full bg-ink/60 text-bone backdrop-blur-sm
+                         transition-opacity duration-300 hover:bg-ink/80
+                         opacity-100 sm:right-6 sm:top-6 sm:h-11 sm:w-11
+                         sm:opacity-0 sm:group-hover:opacity-100"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 

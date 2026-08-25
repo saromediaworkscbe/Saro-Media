@@ -5,6 +5,7 @@ import ProjectsArchive from '@/sections/home/ProjectsArchive';
 import Services from '@/sections/home/Services';
 import ReviewsPreview from '@/sections/home/ReviewsPreview';
 import PackagesPreview from '@/sections/home/PackagesPreview';
+import Terms from '@/sections/packages/Terms';
 import CtaBanner from '@/sections/home/CtaBanner';
 
 const Home = () => (
@@ -15,7 +16,8 @@ const Home = () => (
     <ProjectsArchive />
     <Services />
     <PackagesPreview />
-     <ReviewsPreview />
+    <Terms />
+    {/* <ReviewsPreview /> */}
     <CtaBanner />
   </>
 );

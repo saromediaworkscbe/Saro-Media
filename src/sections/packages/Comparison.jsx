@@ -15,7 +15,7 @@ const Comparison = () => (
     <Container>
       <SectionTitle eyebrow="Side by side" title="Compare the packages" className="mb-14" />
       <Reveal>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto no-scrollbar scrollbar-none" data-lenis-prevent>
           <table className="w-full min-w-[640px] border-collapse text-center">
             <thead>
               <tr className="border-b border-ink-line">
@@ -36,7 +36,7 @@ const Comparison = () => (
                     {row.label}
                   </th>
                   {row.values.map((value, i) => (
-                    <td key={packages[i].id} className="py-4">
+                    <td key={packages[i]?.id || i} className="py-4">
                       <Cell value={value} />
                     </td>
                   ))}

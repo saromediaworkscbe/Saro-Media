@@ -8,20 +8,20 @@ import { services } from '@/data/services';
 import { formatIndex, prefersReducedMotion } from '@/utils/helpers';
 
 /**
- * Horizontal scroll gallery of services — same pinned-track mechanism as
- * FeaturedProjects (proven working pattern in this codebase), replacing
- * the earlier sticky-stacked-panels design.
+ * Services section:
+ * - Mobile & Tablet (< 1024px): Horizontal touch-scrollable carousel with snap points.
+ * - Desktop (>= 1024px): Pinned horizontal scroll track powered by GSAP ScrollTrigger.
  */
 const ServiceCard = ({ service, index }) => (
-  <article className="flex w-[85vw] shrink-0 flex-col justify-between border border-ink-line bg-ink-soft p-6 sm:w-[60vw] sm:p-8 lg:w-[30vw] lg:p-10">
+  <article className="flex h-full w-full flex-col justify-between border border-ink-line bg-ink-soft p-6 sm:p-8 lg:p-10 transition-colors duration-300 hover:border-ember/40">
     <div>
       <p className="font-mono text-[10px] text-ember">{formatIndex(index)}</p>
-      <h3 className="mt-4 font-display text-2xl font-medium leading-tight sm:text-3xl">
+      <h3 className="mt-4 font-display text-xl font-medium leading-tight sm:text-2xl lg:text-3xl text-bone">
         {service.title}
       </h3>
-      <p className="mt-4 text-sm text-bone-muted sm:text-base">{service.description}</p>
+      <p className="mt-4 text-sm text-bone-muted leading-relaxed sm:text-base">{service.description}</p>
     </div>
-    <div className="mt-8 flex flex-wrap gap-2 border-t border-ink-line pt-6">
+    <div className="mt-8 flex flex-wrap gap-2 border-t border-ink-line/60 pt-6">
       {service.deliverables.map((item) => (
         <Badge key={item}>{item}</Badge>
       ))}
@@ -37,9 +37,12 @@ const Services = () => {
     () => {
       if (prefersReducedMotion()) return;
       const mm = gsap.matchMedia();
+
       mm.add('(min-width: 1024px)', () => {
         const track = trackRef.current;
+        if (!track) return;
         const distance = () => track.scrollWidth - window.innerWidth;
+
         gsap.to(track, {
           x: () => -distance(),
           ease: 'none',
@@ -53,6 +56,7 @@ const Services = () => {
           },
         });
       });
+
       return () => mm.revert();
     },
     { scope },
@@ -60,18 +64,39 @@ const Services = () => {
 
   return (
     <section ref={scope} className="overflow-hidden py-section">
-      <Container className="mb-12">
+      <Container className="mb-8 sm:mb-14">
         <SectionTitle eyebrow="What we do" title={`${services.length} disciplines, one studio`} />
       </Container>
 
-      {/* Mobile/tablet: wrapped 2-col grid, no scroll-hijacking. lg+: horizontal pinned track. */}
-      <div
-        ref={trackRef}
-        className="grid grid-cols-1 gap-6 px-gutter sm:grid-cols-2 lg:flex lg:w-max lg:gap-8 lg:pr-[20vw]"
-      >
-        {services.map((service, index) => (
-          <ServiceCard key={service.id} service={service} index={index} />
-        ))}
+      {/* Mobile & Tablet layout (< 1024px): Horizontal touch-scrollable swipe carousel */}
+      <div className="lg:hidden">
+        <div
+          data-lenis-prevent
+          className="flex gap-4 overflow-x-auto pb-6 pt-2 px-5 sm:px-8 snap-x snap-mandatory no-scrollbar scrollbar-none"
+        >
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              className="w-[82vw] max-w-[340px] shrink-0 snap-center sm:w-[360px]"
+            >
+              <ServiceCard service={service} index={index} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop layout (>= 1024px): Pinned horizontal scroll track */}
+      <div className="hidden lg:block">
+        <div
+          ref={trackRef}
+          className="flex w-max gap-8 px-8 xl:px-16 pr-[20vw]"
+        >
+          {services.map((service, index) => (
+            <div key={service.id} className="w-[380px] xl:w-[420px] shrink-0">
+              <ServiceCard service={service} index={index} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

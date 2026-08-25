@@ -1,59 +1,76 @@
 export const packages = [
   {
-    id: 'spark',
+    id: 'standard',
     name: 'Standard',
-    price: 50000,
-    period: 'per project',
-    tagline: 'One sharp deliverable, done properly.',
+    price: 55000,
+    period: 'per event',
+    tagline: 'Essential coverage for your special day.',
     highlight: false,
     features: [
-      'TraditionalPhotographer-1',
-      'Traditional Videographer-1',
-      'Album (80Pages) -1 | FHD-Traditional Video-1 | PhotoFrame(18 x 12) -2 | Calendar | Leather Album bag',
-      'Digital invitation | All Footages in Pen drive',
+      '1 Traditional Photographer',
+      '1 Traditional Videographer',
+      '80-Page Album & Bag',
+      'FHD Traditional Video',
+      '2 Photo Frames (18 x 12)',
+      'Digital Invitation & Pen Drive',
     ],
   },
   {
-    id: 'signal',
+    id: 'premium',
     name: 'Premium',
-    price: 80000,
-    period: 'per project',
-    tagline: 'A campaign that works across every channel.',
+    price: 85000,
+    period: 'per event',
+    tagline: 'Comprehensive coverage with candid photography.',
     highlight: true,
     features: [
-      'TraditionalPhotographer-1 | Traditional Videographer-1 | CandidPhotographer-1',
-      'Album (60Pages) -2 | FHD-Traditional Video',
-      'PhotoFrame(18 x 12) -2|Calendar|Leather Album bag',
-      'Pre(Or)Post Wedding | reels on preorpost weddingshoot',
-      'All Footages in Pen drive',
-   
+      '1 Traditional Photographer & Videographer',
+      '1 Candid Photographer',
+      'Pre or Post Wedding Photoshoot',
+      'Premium Album & Edited Reels',
+      'FHD Video & Highlight Edit',
+      'Frame, Bag & Pen Drive Included',
     ],
   },
   {
-    id: 'orbit',
+    id: 'luxury',
     name: 'Luxury',
-    price: 100000,
-    period: 'per month',
-    tagline: 'An embedded creative team on retainer.',
+    price: 180000,
+    period: 'per event',
+    tagline: 'The ultimate complete cinematic wedding experience.',
     highlight: false,
     features: [
-      'engagementphotography-1',
-      'TraditionalPhotographer-1 | Traditional Videographer-1 | GuestEntry Videographer-1',
-      'candidphotographer-1 | Cinematic videographer-1',
-      'drone videography -1|360-Degree reel son wedding',
+      'Engagement Coverage',
+      '1 Traditional Photographer & Videographer',
+      '1 Guest Entry Videographer',
+      '1 Candid Photographer & Cinematic Videographer',
+      '1 Drone Videography Team',
+      'Pre/Post Photoshoot, Reels & Albums',
+    ],
+  },
+  {
+    id: 'Pre wedding shoot ',
+    name: 'Pre wedding shoot ',
+    price: '30,000/',
+    period: 'per event',
+    tagline: '',
+    highlight: false,
+    features: [
+      'Candid Photographer-1',
+      'Cinematic Videographer-1',
+      'Candid photographer-1',
     ],
   },
 ];
 
 export const comparisonRows = [
-  { label: 'Hero deliverable', values: ['1', '1–2', 'Rolling'] },
-  { label: 'Revision rounds', values: ['2', '4', 'Unlimited minor'] },
-  { label: 'Production window', values: ['2 weeks', '6 weeks', 'Ongoing'] },
-  { label: 'Shoot production', values: [false, true, true] },
-  { label: 'Social adaptations', values: [false, true, true] },
-  { label: 'Motion toolkit', values: [false, true, true] },
-  { label: 'Dedicated Slack channel', values: [false, false, true] },
-  { label: 'Quarterly brand reviews', values: [false, false, true] },
+  { label: 'Traditional Photographer', values: [true, true, true, true] },
+  { label: 'Traditional Videographer', values: [true, true, true, true] },
+  { label: 'Candid Photographer', values: [false, true, true, true] },
+  { label: 'Cinematic Videographer', values: [false, false, true, true] },
+  { label: 'Drone Coverage', values: [false, false, true, true] },
+  { label: 'Pre / Post Wedding Shoot', values: [false, true, true, true] },
+  { label: 'Engagement Shoot', values: [false, false, true, true] },
+  { label: 'Edited Reels & Highlights', values: [false, true, true, true] },
 ];
 
 export const faqs = [
@@ -83,3 +100,67 @@ export const faqs = [
       'Yes — you only pay the difference. Roughly a third of Spark projects grow into Signal once teams see the first cut.',
   },
 ];
+
+export const packageTerms = [
+  {
+    id: 'coverage',
+    title: 'Event Coverage',
+    description: 'This package covers only the reception and wedding day. (04:00 PM to 01:00 PM)',
+    icon: 'Clock',
+  },
+  {
+    id: 'extra-hours',
+    title: 'Extra Services',
+    description: 'Extra hours or additional services will be charged separately.',
+    icon: 'PlusCircle',
+  },
+  {
+    id: 'readiness',
+    title: 'Preparation Time',
+    description: 'The couple should be ready at least 1 hour before the event for photography.',
+    icon: 'UserCheck',
+  },
+  {
+    id: 'albums',
+    title: 'Album Photo Limit',
+    description: 'Each album includes 200–250 selected photos. Additional photos/sheets will be charged extra.',
+    icon: 'Image',
+  },
+  {
+    id: 'travel',
+    title: 'Outstation Travel',
+    description: 'Travel charges will apply for events outside Coimbatore.',
+    icon: 'MapPin',
+  },
+  {
+    id: 'outdoor',
+    title: 'Outdoor & Pre-Wedding',
+    description: 'For outdoor/pre-wedding shoots, travel, accommodation and location charges are to be covered by the client.',
+    icon: 'Compass',
+  },
+];
+
+export const paymentTerms = [
+  {
+    step: '01',
+    percentage: '50%',
+    title: 'Advance Payment',
+    description: '50% advance is required to confirm the booking.',
+    highlight: true,
+  },
+  {
+    step: '02',
+    percentage: '40%',
+    title: 'Event Day',
+    description: '40% on the event day.',
+    highlight: false,
+  },
+  {
+    step: '03',
+    percentage: '10%',
+    title: 'Final Delivery',
+    description: 'The remaining 10% on final delivery.',
+    highlight: false,
+  },
+];
+

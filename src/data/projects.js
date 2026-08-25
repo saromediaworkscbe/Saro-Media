@@ -6,17 +6,38 @@ import pro3 from '@/assets/images/pro-4.jpg';
 import pro01 from '@/assets/images/pro-1-01.jpg';
 import pro02 from '@/assets/images/pro-1-02.jpg';
 import pro03 from '@/assets/images/pro-1-03.jpg';
+import img1 from '@/assets/images/img-1.jpg';
+import img2 from '@/assets/images/img-2.jpg';
+import img3 from '@/assets/images/img-3.jpg';
+import img4 from '@/assets/images/img-4.jpg';
+import img5 from '@/assets/images/img-5.jpg';
+import img6 from '@/assets/images/img-6.jpg';
+import img7 from '@/assets/images/img-7.jpg';
+import img8 from '@/assets/images/img-8.jpg';
+import img9 from '@/assets/images/img-9.jpg';
+
+import m1 from '@/assets/images/m-1.jpg';
+import m2 from '@/assets/images/m-2.jpg';
+import m3 from '@/assets/images/m-3.jpg';
+
+import f1 from '@/assets/images/f-1.jpg';
+import f2 from '@/assets/images/f-2.jpg';
+import f3 from '@/assets/images/f-3.jpg';
+import f4 from '@/assets/images/f-4.jpg';
+import f5 from '@/assets/images/f-5.jpg';
+import f6 from '@/assets/images/f-6.jpg';
+
 
 
 export const PROJECT_CATEGORIES = [];
 
 export const projects = [
   {
-    slug: 'wedding',
-    title: 'Wedding',
+    slug: '   ',
+    title: '',
     category: 'Branding',
     year: 2026,
-    client: 'Wedding',
+    client: '',
     services: ['Direction', 'Cinematography', 'Post-production'],
     technologies: ['RED Komodo', 'DaVinci Resolve', 'After Effects', 'Cinema 4D'],
     summary:
@@ -32,31 +53,37 @@ export const projects = [
     accentStat: { value: 14, suffix: 'M', label: 'organic views in week one' },
   },
   {
-    slug: 'Event',
-    title: 'Event',
+    slug: '',
+    title: '',
     category: 'Branding',
     year: 2025,
-    client: 'Event',
+    client: '',
     services: ['Identity', 'Art Direction', 'Packaging'],
     technologies: [],
     summary:
       'Full identity for a coastal fire-cooking restaurant group — mark, menus, signage and a site that smoulders.',
     description:
       'Everything at Salt & Ash is cooked over open flame, so we made fire the identity system itself: a wordmark that chars at its edges, menus printed on smoke-toned stock, and a website where embers drift behind the type.',
-    cover: pro1,
+    cover: img1,
     gallery: [
-      img('photo-1517248135467-4c7edcad34c4'),
-      img('photo-1552566626-52f8b828add9'),
-      img('photo-1466978913421-dad2ebd01d17'),
+      img1,
+      img2,
+      img3,
+      img4,
+      img5,
+      img6,
+      img7,
+      img8,
+      img9,
     ],
     accentStat: { value: 3, suffix: 'x', label: 'covers per night after relaunch' },
   },
   {
-    slug: 'Marriage',
-    title: 'Marriage',
+    slug: '',
+    title: '',
     category: 'Branding',
     year: 2025,
-    client: 'Marriage',
+    client: '',
     services: ['Web Design', 'Development', 'WebGL'],
     technologies: ['React', 'Three.js', 'GSAP', 'Vercel'],
     summary:
@@ -65,29 +92,32 @@ export const projects = [
       'Orbital wanted a site people would screen-record. We modelled the festival main stage in 3D and made it the navigation: each orbiting artist card pulls you into their set time, stage and audio preview without a single page reload.',
     cover: pro2,
     gallery: [
-      img('photo-1459749411175-04bf5292ceea'),
-      img('photo-1493225457124-a3eb161ffa5f'),
-      img('photo-1514320291840-2e0a9bf2a9ae'),
+      m1,
+      m2,
+      m3,
     ],
     accentStat: { value: 40, suffix: 'k', label: 'tickets sold in six hours' },
   },
   {
-    slug: 'Shoot',
-    title: 'Shoot',
+    slug: '',
+    title: '',
     category: 'Branding',
     year: 2026,
-    client: 'Shoot',
+    client: '',
     services: ['Campaign', 'Photography', 'Social'],
     technologies: ['Phase One', 'Capture One', 'Premiere Pro'],
     summary:
       'A spring campaign shot entirely on a working sheep farm in the Scottish Borders, in one continuous day of light.',
     description:
       'The SS26 collection is about slowness, so we refused studio light entirely. One farm, one day, dawn to dusk — the campaign runs in chronological order, and the light does the art direction.',
-    cover: pro3,
+    cover: f5,
     gallery: [
-      img('photo-1469334031218-e382a71b716b'),
-      img('photo-1483985988355-763728e1935b'),
-      img('photo-1445205170230-053b83016050'),
+      f1,
+      f2,
+      f3,
+      f4,
+      f5,
+      f6,
     ],
     accentStat: { value: 212, suffix: '%', label: 'lift in launch-week revenue' },
   },

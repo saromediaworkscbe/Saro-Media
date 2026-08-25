@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container';
 import Reveal from '@/components/ui/Reveal';
 import PricingCard from '@/components/ui/PricingCard';
 import Comparison from '@/sections/packages/Comparison';
+import Terms from '@/sections/packages/Terms';
 import Faq from '@/sections/packages/Faq';
 import CtaBanner from '@/sections/home/CtaBanner';
 import { packages } from '@/data/packages';
@@ -12,18 +13,19 @@ const Packages = () => (
   <>
     <Seo title="Packages" description="Fixed, honest pricing for films, identities and digital work. Three packages, no black boxes." />
     <PageHeader
-      eyebrow="Pricing"
-      title="Honest numbers"
-      description="Every scope is fixed before production begins and itemised to the line. Pick a starting point — a third of projects change size once we talk."
+      eyebrow="Packages"
+      title="Our Packages"
+      description=""
     />
     <Container className="pb-section">
-      <Reveal stagger={0.12} className="grid gap-6 md:grid-cols-3">
+      <Reveal stagger={0.1} className="grid gap-6 grid-cols-1 lg:grid-cols-4">
         {packages.map((pkg) => (
           <PricingCard key={pkg.id} pkg={pkg} />
         ))}
       </Reveal>
     </Container>
     <Comparison />
+    <Terms />
     <Faq />
     <CtaBanner />
   </>

@@ -13,6 +13,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: 'Work', to: '/#projects' },
   { label: 'Packages', to: '/#packages' },
+  { label: 'Terms', to: '/#terms' },
   { label: 'Reviews', to: '/#reviews' },
   // { label: 'About', to: '/#about' },
   { label: 'Contact', to: '/#contact' },

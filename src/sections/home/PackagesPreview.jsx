@@ -7,12 +7,10 @@ import { packages } from '@/data/packages';
 const PackagesPreview = () => (
   <section className="py-section" id="packages">
     <Container>
-      <SectionTitle eyebrow="Packages" title="Three ways to work with us" className="mb-16" />
-      <Reveal variant="clip" stagger={0.12} className="grid gap-6 md:grid-cols-3">
+      <SectionTitle eyebrow="Packages" title="Four ways to work with us" className="mb-14" />
+      <Reveal variant="clip" stagger={0.1} className="grid gap-6 grid-cols-1 lg:grid-cols-4">
         {packages.map((pkg) => (
-          <div key={pkg.id} className={pkg.highlight ? 'md:-mt-4' : ''}>
-            <PricingCard pkg={pkg} />
-          </div>
+          <PricingCard key={pkg.id} pkg={pkg} />
         ))}
       </Reveal>
     </Container>
