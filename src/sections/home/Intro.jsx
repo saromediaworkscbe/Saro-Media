@@ -5,7 +5,7 @@ import Grid from '@/components/ui/Grid';
 import Reveal from '@/components/ui/Reveal';
 import AnimatedImage from '@/components/ui/AnimatedImage';
 import { prefersReducedMotion } from '@/utils/helpers';
-import introImg from '@/assets/images/pro-1-02.jpg';
+import introImg from '@/assets/images/img-2.jpg';
 
 /**
  * Agency introduction — word-by-word color reveal scrubbed to scroll,

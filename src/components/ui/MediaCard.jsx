@@ -96,7 +96,6 @@ const MediaCard = memo(function MediaCard({ project, index = 0, ratio = 'aspect-
             </span>
           </div>
           <div className="flex shrink-0 items-center gap-3">
-            <Badge>{project.category}</Badge>
             <span className="hidden font-mono text-label text-bone-faint sm:inline">{project.year}</span>
           </div>
         </div>

@@ -60,6 +60,15 @@ const PricingCard = memo(function PricingCard({ pkg }) {
             <li key={feature} className="flex items-start gap-2.5 text-xs text-bone-muted leading-relaxed">
               <Check size={14} className="shrink-0 text-ember mt-0.5" />
               <span>{feature}</span>
+              
+            </li>
+          ))}
+          <h1 className='mt-3 text-xs text-bone-muted leading-relaxed border-b border-ink-line/100 pb-2 text-[#ff6437]'>Deliverables</h1>
+            {pkg.delivery.map((item) => (
+            <li key={item} className="flex items-start gap-2.5 text-xs text-bone-muted leading-relaxed">
+              <Check size={14} className="shrink-0 text-ember mt-0.5" />
+              <span>{item}</span>
+              
             </li>
           ))}
         </ul>

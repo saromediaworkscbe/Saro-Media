@@ -1,11 +1,11 @@
 export const SITE = {
   name: 'Saro Studio',
   tagline: 'Films, brands & digital worlds',
-  email: 'hello@saromedia.works',
+  email: 'saromediaworkscbe@gmail.com',
   phone: '+91 9944582749',
   address: 'Coimbatore, Tamil Nadu, India',
   socials: [
-    { label: 'Instagram', href: 'https://instagram.com' },
+    { label: 'Instagram', href: 'https://www.instagram.com/saro_mediaworks/' },
     { label: 'WhatsApp', href: 'https://wa.me/919944582749' },
   ],
 };

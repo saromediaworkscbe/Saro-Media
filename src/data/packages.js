@@ -1,4 +1,25 @@
 export const packages = [
+   {
+    id: 'Pre wedding shoot ',
+    name: 'Pre wedding shoot ',
+    price: 31999,
+    period: 'per event',
+    tagline: 'Essential coverage for your special day.',
+    highlight: false,
+    features: [
+      'Candid Photographer-1',
+      'Cinematic Videographer-1',
+     
+    ],
+    delivery:[
+      'premium Album (80 Pages) -2',
+      'Save the date Poster',
+      'Selective Edited Photos',
+      'Cinematic Highlights Reel',
+      'Raw footage in Pendrive'
+
+    ]
+  },
   {
     id: 'standard',
     name: 'Standard',
@@ -9,11 +30,14 @@ export const packages = [
     features: [
       '1 Traditional Photographer',
       '1 Traditional Videographer',
-      '80-Page Album & Bag',
-      'FHD Traditional Video',
-      '2 Photo Frames (18 x 12)',
-      'Digital Invitation & Pen Drive',
     ],
+     delivery:[
+      'Wedding Album 80 Pages - 1',
+      'Full HD Traditional Video',
+      'PhotoFrame(18 x 12) - 2',
+      'Calendar | Album bag',
+      'All Footages in Pen drive'
+    ]
   },
   {
     id: 'premium',
@@ -23,13 +47,20 @@ export const packages = [
     tagline: 'Comprehensive coverage with candid photography.',
     highlight: true,
     features: [
-      '1 Traditional Photographer & Videographer',
+      '1 Traditional Photographer',
       '1 Candid Photographer',
+      '1 Traditional Videographer',
       'Pre or Post Wedding Photoshoot',
-      'Premium Album & Edited Reels',
-      'FHD Video & Highlight Edit',
-      'Frame, Bag & Pen Drive Included',
     ],
+     delivery:[
+      'premium Album (80 Pages) -2 ',
+      'pre wedding mini booklet -1',
+      'PhotoFrame(18 x 12) - 3',
+      'Calendar | Leather Album bag',
+      'All Footages in Pen drive',
+      'Save the date Poster',
+      'Selective Edited Photos',
+    ]
   },
   {
     id: 'luxury',
@@ -39,27 +70,30 @@ export const packages = [
     tagline: 'The ultimate complete cinematic wedding experience.',
     highlight: false,
     features: [
-      'Engagement Coverage',
-      '1 Traditional Photographer & Videographer',
+      'Engagement Photography',
+      '1 Traditional Photographer',
+      '1 Traditional Videographer',
       '1 Guest Entry Videographer',
-      '1 Candid Photographer & Cinematic Videographer',
-      '1 Drone Videography Team',
-      'Pre/Post Photoshoot, Reels & Albums',
+      '1 Candid Photographer',
+      '1 Cinematic Videographer',
+      '1 Drone Videography',
+      'Pre/Post Photoshoot, Videography',
     ],
+    delivery:[
+      'premium Album (80 Pages) -2 ',
+      'pre wedding mini booklet -1',
+      'PhotoFrame(18 x 12)-4',
+      'Traditional Wedding Video Highlights',
+      'Traditional Wedding Full Video',
+      'Cinematic FULL HD Video',
+      'Guest Entry Video',
+      'Calendar | Leather Album bag',
+      'Save the date Poster',
+      'Selective Edited Photos',
+      'All Footages in Pen drive',
+    ]
   },
-  {
-    id: 'Pre wedding shoot ',
-    name: 'Pre wedding shoot ',
-    price: '30,000/',
-    period: 'per event',
-    tagline: '',
-    highlight: false,
-    features: [
-      'Candid Photographer-1',
-      'Cinematic Videographer-1',
-      'Candid photographer-1',
-    ],
-  },
+ 
 ];
 
 export const comparisonRows = [
@@ -117,7 +151,7 @@ export const packageTerms = [
   {
     id: 'readiness',
     title: 'Preparation Time',
-    description: 'The couple should be ready at least 1 hour before the event for photography.',
+    description: 'The couple should be ready at least 1 hour before the event for individual photography .',
     icon: 'UserCheck',
   },
   {

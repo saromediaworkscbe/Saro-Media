@@ -35,7 +35,7 @@ export const projects = [
   {
     slug: '   ',
     title: '',
-    category: 'Branding',
+
     year: 2026,
     client: '',
     services: ['Direction', 'Cinematography', 'Post-production'],
@@ -55,7 +55,7 @@ export const projects = [
   {
     slug: '',
     title: '',
-    category: 'Branding',
+ 
     year: 2025,
     client: '',
     services: ['Identity', 'Art Direction', 'Packaging'],
@@ -81,7 +81,6 @@ export const projects = [
   {
     slug: '',
     title: '',
-    category: 'Branding',
     year: 2025,
     client: '',
     services: ['Web Design', 'Development', 'WebGL'],
@@ -95,13 +94,14 @@ export const projects = [
       m1,
       m2,
       m3,
+      f1,
     ],
     accentStat: { value: 40, suffix: 'k', label: 'tickets sold in six hours' },
   },
   {
     slug: '',
     title: '',
-    category: 'Branding',
+ 
     year: 2026,
     client: '',
     services: ['Campaign', 'Photography', 'Social'],
@@ -112,7 +112,6 @@ export const projects = [
       'The SS26 collection is about slowness, so we refused studio light entirely. One farm, one day, dawn to dusk — the campaign runs in chronological order, and the light does the art direction.',
     cover: f5,
     gallery: [
-      f1,
       f2,
       f3,
       f4,
