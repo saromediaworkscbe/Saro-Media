@@ -18,8 +18,8 @@ const CONTACT_LINKS = [
   },
   {
     label: 'Email',
-    value: 'hello@saromedia.works',
-    href: 'mailto:hello@saromedia.works',
+    value: 'saromediaworkscbe@gmail.com',
+    href: 'mailto:saromediaworkscbe@gmail.com',
     icon: (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.75">
         <path d="M3 5h18v14H3z" strokeLinecap="round" strokeLinejoin="round" />
@@ -30,7 +30,7 @@ const CONTACT_LINKS = [
   {
     label: 'Instagram',
     value: '@saromediaworks',
-    href: 'https://instagram.com/saromediaworks',
+    href: 'https://www.instagram.com/saro_mediaworks/',
     icon: (
       <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.75">
         <rect x="3" y="3" width="18" height="18" rx="5" />

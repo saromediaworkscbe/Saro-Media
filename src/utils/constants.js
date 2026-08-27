@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Saro Studio',
-  tagline: 'Films, brands & digital worlds',
+  tagline:'Films, brands & digital worlds',
   email: 'saromediaworkscbe@gmail.com',
   phone: '+91 9944582749',
   address: 'Coimbatore, Tamil Nadu, India',
