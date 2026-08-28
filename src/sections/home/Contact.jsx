@@ -56,9 +56,9 @@ const Contact = () => (
         />
 
         {/* Right — contact links */}
-        <ul className="flex w-full flex-col items-center gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-8 md:justify-end">
+        <ul className="flex w-full flex-col items-start gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-8 md:justify-end">
           {CONTACT_LINKS.map(({ label, value, href, icon, nowrap }) => (
-            <li key={label} className="flex w-full justify-center sm:w-auto sm:justify-start">
+            <li key={label} className="flex w-full justify-start sm:w-auto sm:justify-start">
               <a
                 href={href}
                 target={label === 'Instagram' ? '_blank' : undefined}

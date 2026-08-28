@@ -12,35 +12,29 @@ gsap.defaults({ ease: 'expo.out', duration: 0.9 });
 // Wire an existing Lenis instance into GSAP's ticker + ScrollTrigger.
 // Call this once, after Lenis is instantiated (e.g. in your root layout/App).
 export function connectLenis(lenis) {
-  if (!lenis) return;
+  if (!lenis) return undefined;
 
-  // Tell ScrollTrigger about every Lenis scroll tick
-  lenis.on('scroll', ScrollTrigger.update);
+  const onScroll = () => {
+    ScrollTrigger.update();
+  };
+  lenis.on('scroll', onScroll);
 
-  // Drive Lenis from GSAP's ticker instead of its own rAF loop,
-  // so both stay perfectly frame-synced
-  gsap.ticker.add((time) => {
+  const tick = (time) => {
     lenis.raf(time * 1000);
-  });
+  };
+  gsap.ticker.add(tick);
   gsap.ticker.lagSmoothing(0);
 
-  // Tell ScrollTrigger to use Lenis's scroll position/methods
-  // instead of native window scroll
-  ScrollTrigger.scrollerProxy(document.body, {
-    scrollTop(value) {
-      if (arguments.length) {
-        lenis.scrollTo(value, { immediate: true });
-      }
-      return lenis.scroll;
-    },
-    getBoundingClientRect() {
-      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-    },
-    pinType: document.body.style.transform ? 'transform' : 'fixed',
-  });
+  const onRefresh = () => {
+    lenis.resize();
+  };
+  ScrollTrigger.addEventListener('refresh', onRefresh);
 
-  ScrollTrigger.addEventListener('refresh', () => lenis.resize());
-  ScrollTrigger.refresh();
+  return () => {
+    lenis.off('scroll', onScroll);
+    gsap.ticker.remove(tick);
+    ScrollTrigger.removeEventListener('refresh', onRefresh);
+  };
 }
 
 export { gsap, ScrollTrigger };

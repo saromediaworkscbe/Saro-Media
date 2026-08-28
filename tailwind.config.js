@@ -12,8 +12,8 @@ export default {
           line: '#1C1C1C',    // hairline borders
         },
         ember: {
-          DEFAULT: '#FF6B00', // brand accent
-          dim: '#B34B00',
+          DEFAULT: '#BD881D', // brand accent
+          dim: '#8C6415',
         },
         bone: {
           DEFAULT: '#F5F5F5', // primary text

@@ -170,7 +170,7 @@ const FeaturedProjects = () => {
             start: 'top top',
             end: () => `+=${distance()}`,
             pin: true,
-            scrub: 1,
+            scrub: 0.5,
             invalidateOnRefresh: true,
           },
         });

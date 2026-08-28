@@ -19,7 +19,7 @@ const Intro = () => {
       split.words,
       { color: '#2A2A2A' },
       {
-        color: '#F5F5F5',
+        color: '#fff',
         stagger: 0.4,
         ease: 'none',
         scrollTrigger: { trigger: el, start: 'top 75%', end: 'bottom 45%', scrub: true },
@@ -33,7 +33,7 @@ const Intro = () => {
         <Grid className="items-center">
           <div className="col-span-4 md:col-span-8 lg:col-span-7">
             <Reveal>
-              <p className="mb-8 font-mono text-label uppercase text-ember">The studio</p>
+              <p className="mb-8 font-mono text-label uppercase text-[#BD881D]">The studio</p>
             </Reveal>
             <p
               ref={elementRef}

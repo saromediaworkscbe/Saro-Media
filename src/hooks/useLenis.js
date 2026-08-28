@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
-import { gsap, ScrollTrigger } from '@/animations/gsapSetup';
+import { connectLenis } from '@/animations/gsapSetup';
 import { prefersReducedMotion } from '@/utils/helpers';
 
 /**
@@ -14,21 +14,21 @@ export const useLenis = () => {
     if (prefersReducedMotion()) return undefined;
 
     const lenis = new Lenis({
-      duration: 1.4, // was 1.15 — a little more glide so scrolling doesn't feel rushed
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
     });
     lenisRef.current = lenis;
     window.lenis = lenis;
 
-    lenis.on('scroll', ScrollTrigger.update);
-
-    const tick = (time) => lenis.raf(time * 1000);
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    const disconnect = connectLenis(lenis);
 
     return () => {
-      gsap.ticker.remove(tick);
+      if (disconnect) disconnect();
       lenis.destroy();
       lenisRef.current = null;
       window.lenis = null;
