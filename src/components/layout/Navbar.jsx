@@ -167,7 +167,7 @@ const Navbar = () => {
             Saro Media<span className="text-ember">.</span>
           </Link>
 
-          <ul className="hidden items-center gap-8 lg:flex">
+          <ul className="hidden items-center  gap-8 lg:flex">
             {NAV_LINKS.map((link) => (
               <li key={link.to}>
                 <NavLink
@@ -176,7 +176,7 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     cn(
                       'font-mono text-label uppercase transition-colors duration-300 hover:text-bone',
-                      isLinkActive(link, isActive) ? 'text-ember' : 'text-bone-muted',
+                      isLinkActive(link, isActive) ? 'text-ember' : 'text-bone',
                     )
                   }
                   {...cursorProps('hover')}

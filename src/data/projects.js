@@ -27,6 +27,16 @@ import f4 from '@/assets/images/f-4.jpg';
 import f5 from '@/assets/images/f-5.jpg';
 import f6 from '@/assets/images/f-6.jpg';
 
+import s1 from '@/assets/images/s-1.jpg';
+import s2 from '@/assets/images/s-2.jpg';
+import s3 from '@/assets/images/s-3.jpg';
+import s4 from '@/assets/images/s-4.jpg';
+import s5 from '@/assets/images/s-5.jpg';
+import s6 from '@/assets/images/s-6.jpg';
+import s7 from '@/assets/images/s-7.jpg';
+
+
+
 
 
 export const PROJECT_CATEGORIES = [];
@@ -38,7 +48,6 @@ export const projects = [
 
     year: 2026,
     client: '',
-    services: ['Direction', 'Cinematography', 'Post-production'],
     technologies: ['RED Komodo', 'DaVinci Resolve', 'After Effects', 'Cinema 4D'],
     summary:
       'A 90-second launch film for an electric hypercar, shot over three nights in a decommissioned power station.',
@@ -58,7 +67,7 @@ export const projects = [
  
     year: 2025,
     client: '',
-    services: ['Identity', 'Art Direction', 'Packaging'],
+   
     technologies: [],
     summary:
       'Full identity for a coastal fire-cooking restaurant group — mark, menus, signage and a site that smoulders.',
@@ -83,7 +92,7 @@ export const projects = [
     title: '',
     year: 2025,
     client: '',
-    services: ['Web Design', 'Development', 'WebGL'],
+
     technologies: ['React', 'Three.js', 'GSAP', 'Vercel'],
     summary:
       'A WebGL festival site where the lineup orbits a live 3D stage — 40k tickets sold through it in six hours.',
@@ -104,7 +113,7 @@ export const projects = [
  
     year: 2026,
     client: '',
-    services: ['Campaign', 'Photography', 'Social'],
+   
     technologies: ['Phase One', 'Capture One', 'Premiere Pro'],
     summary:
       'A spring campaign shot entirely on a working sheep farm in the Scottish Borders, in one continuous day of light.',
@@ -118,6 +127,32 @@ export const projects = [
       f5,
       f6,
     ],
+    
+    accentStat: { value: 212, suffix: '%', label: 'lift in launch-week revenue' },
+  },
+    {
+    slug: '',
+    title: '',
+ 
+    year: 2026,
+    client: '',
+   
+    technologies: ['Phase One', 'Capture One', 'Premiere Pro'],
+    summary:
+      'A spring campaign shot entirely on a working sheep farm in the Scottish Borders, in one continuous day of light.',
+    description:
+      'The SS26 collection is about slowness, so we refused studio light entirely. One farm, one day, dawn to dusk — the campaign runs in chronological order, and the light does the art direction.',
+    cover: s1,
+    gallery: [
+      s1,
+      s2,
+      s3,
+      s4,
+      s5,
+      s6,
+      s7,
+    ],
+    
     accentStat: { value: 212, suffix: '%', label: 'lift in launch-week revenue' },
   },
 ];

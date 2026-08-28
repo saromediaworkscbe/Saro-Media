@@ -4,6 +4,7 @@ import Reveal from '@/components/ui/Reveal';
 import Button from '@/components/ui/Button';
 import Marquee from '@/components/ui/Marquee';
 import { SITE } from '@/utils/constants';
+import Contact from '@/sections/home/Contact';
 
 /** Closing CTA with an oversized marquee ribbon behind it. */
 const CtaBanner = () => (
@@ -27,7 +28,10 @@ const CtaBanner = () => (
           Book the call
         </Button>
       </Reveal>
+  
+
     </Container>
+
   </section>
 );
 

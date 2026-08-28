@@ -7,6 +7,7 @@ import ReviewsPreview from '@/sections/home/ReviewsPreview';
 import PackagesPreview from '@/sections/home/PackagesPreview';
 import Terms from '@/sections/packages/Terms';
 import CtaBanner from '@/sections/home/CtaBanner';
+import Contact from '@/sections/home/Contact';
 
 const Home = () => (
   <>
@@ -19,6 +20,7 @@ const Home = () => (
     <Terms />
     {/* <ReviewsPreview /> */}
     <CtaBanner />
+      <Contact/>
   </>
 );
 
