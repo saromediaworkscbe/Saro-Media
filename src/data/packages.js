@@ -53,7 +53,7 @@ export const packages = [
       'Pre or Post Wedding Photoshoot',
     ],
      delivery:[
-      'premium Album (80 Pages) -2 ',
+      'Mini Booklet Album -1',
       'pre wedding mini booklet -1',
       'PhotoFrame(18 x 12) - 3',
       'Calendar | Leather Album bag',
