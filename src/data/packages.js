@@ -12,7 +12,7 @@ export const packages = [
      
     ],
     delivery:[
-      'premium Album (80 Pages) -2',
+      'Mini Booklet Album -1',
       'Save the date Poster',
       'Selective Edited Photos',
       'Cinematic Highlights Reel',
@@ -32,11 +32,11 @@ export const packages = [
       '1 Traditional Videographer',
     ],
      delivery:[
-      'Wedding Album 80 Pages - 1',
+      'Wedding Album 70 Pages - 1',
       'Full HD Traditional Video',
       'PhotoFrame(18 x 12) - 2',
       'Calendar | Album bag',
-      'All Footages in Pen drive'
+      'All Footages in Pen drive',
     ]
   },
   {
@@ -53,7 +53,8 @@ export const packages = [
       'Pre or Post Wedding Photoshoot',
     ],
      delivery:[
-      'Mini Booklet Album -1',
+      'premium Album (80 Pages) -2',
+      'Premium Wedding Album -2',
       'pre wedding mini booklet -1',
       'PhotoFrame(18 x 12) - 3',
       'Calendar | Leather Album bag',
@@ -65,7 +66,7 @@ export const packages = [
   {
     id: 'luxury',
     name: 'Luxury',
-    price: 180000,
+    price: 185000,
     period: 'per event',
     tagline: 'The ultimate complete cinematic wedding experience.',
     highlight: false,
@@ -77,18 +78,19 @@ export const packages = [
       '1 Candid Photographer',
       '1 Cinematic Videographer',
       '1 Drone Videography',
-      'Pre/Post Photoshoot, Videography',
+      'Pre or Post Photoshoot, Videography',
     ],
     delivery:[
-      'premium Album (80 Pages) -2 ',
+      'luxury Album (80 Pages) -2 ',
       'pre wedding mini booklet -1',
       'PhotoFrame(18 x 12)-4',
       'Traditional Wedding Video Highlights',
       'Traditional Wedding Full Video',
       'Cinematic FULL HD Video',
       'Guest Entry Video',
-      'Calendar | Leather Album bag',
+      'Calendar | Album Suitcase',
       'Save the date Poster',
+      'Pre-wedding reels',
       'Selective Edited Photos',
       'All Footages in Pen drive',
     ]
